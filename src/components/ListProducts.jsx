@@ -4,7 +4,6 @@ import { listProducts } from './../graphql/queries';
 import { deleteProduct } from './../graphql/mutations';
 
 import mainImage from './../images/spalanie.png'
-import "../../node_modules/semantic-ui/dist/semantic.css"
 
 
 function ListProducts(props) {

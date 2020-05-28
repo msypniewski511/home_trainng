@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withAuthenticator } from 'aws-amplify-react'
 
-import "semantic";
-import "../node_modules/semantic-ui/dist/semantic.css"
+// import "../node_modules/semantic-ui/dist/semantic.css"
 import './App.scss';
 import ListProducts from './components/ListProducts';
 import MainMenu from './components/MainMenu';
