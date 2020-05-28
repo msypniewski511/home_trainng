@@ -1,0 +1,17 @@
+type Product @model @auth(rules: [
+  {allow: owner, queries: null}
+])
+@key(name: "queryTitle", fields: ["title"], queryField: "productsByTitle")
+{
+  id: ID!
+  title: String!
+  description: String!
+  contents: [Contenet] @connection(name: "ProductContents", sortField: "position")
+}
+
+type Contenet @model {
+  id: ID!
+  position: Int
+  queryName: String!
+  product: Product @connection(name: "ProductContents", sortField: "position")
+}
