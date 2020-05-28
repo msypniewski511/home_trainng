@@ -1,5 +1,4 @@
 import React from 'react';
-import "../../node_modules/semantic-ui/dist/semantic.css"
 
 function MainMenu(props) {
   return (
