@@ -64,6 +64,9 @@ export const createContenet = /* GraphQL */ `
         description
         owner
       }
+      photos {
+        nextToken
+      }
     }
   }
 `;
@@ -82,6 +85,9 @@ export const updateContenet = /* GraphQL */ `
         description
         owner
       }
+      photos {
+        nextToken
+      }
     }
   }
 `;
@@ -99,6 +105,81 @@ export const deleteContenet = /* GraphQL */ `
         title
         description
         owner
+      }
+      photos {
+        nextToken
+      }
+    }
+  }
+`;
+export const createPhoto = /* GraphQL */ `
+  mutation CreatePhoto(
+    $input: CreatePhotoInput!
+    $condition: ModelPhotoConditionInput
+  ) {
+    createPhoto(input: $input, condition: $condition) {
+      id
+      caption
+      position
+      photoContentId
+      content {
+        id
+        position
+        queryName
+      }
+      bucket
+      fullsize {
+        key
+        width
+        height
+      }
+    }
+  }
+`;
+export const updatePhoto = /* GraphQL */ `
+  mutation UpdatePhoto(
+    $input: UpdatePhotoInput!
+    $condition: ModelPhotoConditionInput
+  ) {
+    updatePhoto(input: $input, condition: $condition) {
+      id
+      caption
+      position
+      photoContentId
+      content {
+        id
+        position
+        queryName
+      }
+      bucket
+      fullsize {
+        key
+        width
+        height
+      }
+    }
+  }
+`;
+export const deletePhoto = /* GraphQL */ `
+  mutation DeletePhoto(
+    $input: DeletePhotoInput!
+    $condition: ModelPhotoConditionInput
+  ) {
+    deletePhoto(input: $input, condition: $condition) {
+      id
+      caption
+      position
+      photoContentId
+      content {
+        id
+        position
+        queryName
+      }
+      bucket
+      fullsize {
+        key
+        width
+        height
       }
     }
   }

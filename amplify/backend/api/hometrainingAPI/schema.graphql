@@ -14,4 +14,23 @@ type Contenet @model {
   position: Int
   queryName: String!
   product: Product @connection(name: "ProductContents", sortField: "position")
+  photos: [Photo] @connection(name: "ContentPhotos", sortField: "position")
+}
+
+type Photo
+@model
+@key(name: "byContent", fields: ["photoContentId"], queryField: "listPhotosByContent"){
+  id: ID!
+  caption: String
+  position: Int
+  photoContentId: ID!
+  content: Contenet @connection(name: "ContentPhotos")
+  bucket: String!
+  fullsize: FileS3Info!
+}
+
+type FileS3Info {
+  key: String!
+  width: String!
+  height: String!
 }

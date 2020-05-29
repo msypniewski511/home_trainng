@@ -43,6 +43,9 @@ export const getContenet = /* GraphQL */ `
         description
         owner
       }
+      photos {
+        nextToken
+      }
     }
   }
 `;
@@ -57,6 +60,45 @@ export const listContenets = /* GraphQL */ `
         id
         position
         queryName
+      }
+      nextToken
+    }
+  }
+`;
+export const getPhoto = /* GraphQL */ `
+  query GetPhoto($id: ID!) {
+    getPhoto(id: $id) {
+      id
+      caption
+      position
+      photoContentId
+      content {
+        id
+        position
+        queryName
+      }
+      bucket
+      fullsize {
+        key
+        width
+        height
+      }
+    }
+  }
+`;
+export const listPhotos = /* GraphQL */ `
+  query ListPhotos(
+    $filter: ModelPhotoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPhotos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        caption
+        position
+        photoContentId
+        bucket
       }
       nextToken
     }
@@ -82,6 +124,32 @@ export const productsByTitle = /* GraphQL */ `
         title
         description
         owner
+      }
+      nextToken
+    }
+  }
+`;
+export const listPhotosByContent = /* GraphQL */ `
+  query ListPhotosByContent(
+    $photoContentId: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelPhotoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPhotosByContent(
+      photoContentId: $photoContentId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        caption
+        position
+        photoContentId
+        bucket
       }
       nextToken
     }

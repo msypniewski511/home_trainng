@@ -52,6 +52,9 @@ export const onCreateContenet = /* GraphQL */ `
         description
         owner
       }
+      photos {
+        nextToken
+      }
     }
   }
 `;
@@ -67,6 +70,9 @@ export const onUpdateContenet = /* GraphQL */ `
         description
         owner
       }
+      photos {
+        nextToken
+      }
     }
   }
 `;
@@ -81,6 +87,72 @@ export const onDeleteContenet = /* GraphQL */ `
         title
         description
         owner
+      }
+      photos {
+        nextToken
+      }
+    }
+  }
+`;
+export const onCreatePhoto = /* GraphQL */ `
+  subscription OnCreatePhoto {
+    onCreatePhoto {
+      id
+      caption
+      position
+      photoContentId
+      content {
+        id
+        position
+        queryName
+      }
+      bucket
+      fullsize {
+        key
+        width
+        height
+      }
+    }
+  }
+`;
+export const onUpdatePhoto = /* GraphQL */ `
+  subscription OnUpdatePhoto {
+    onUpdatePhoto {
+      id
+      caption
+      position
+      photoContentId
+      content {
+        id
+        position
+        queryName
+      }
+      bucket
+      fullsize {
+        key
+        width
+        height
+      }
+    }
+  }
+`;
+export const onDeletePhoto = /* GraphQL */ `
+  subscription OnDeletePhoto {
+    onDeletePhoto {
+      id
+      caption
+      position
+      photoContentId
+      content {
+        id
+        position
+        queryName
+      }
+      bucket
+      fullsize {
+        key
+        width
+        height
       }
     }
   }
