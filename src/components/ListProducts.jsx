@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+
 import { API, graphqlOperation } from 'aws-amplify';
 import { listProducts } from './../graphql/queries';
 import { deleteProduct } from './../graphql/mutations';
@@ -36,7 +38,7 @@ function ListProducts(props) {
           <img className="ui small image mr-10" src={mainImage} />
           <div className="content">
             <div className="item-header">
-              <a className="header">{product.title}</a>
+              <NavLink to={`/products/${product.id}`} className="header">{product.title}</NavLink>
               <div className="meta">
                 <span>Data</span>
                 <br />
@@ -46,7 +48,7 @@ function ListProducts(props) {
 
             <div className="description">{product.description}</div>
             <div className="extra">
-              <button className="mini ui right labeled icon button primary">Szczegóły...<i className="right arrow icon"></i></button>
+              <NavLink to={`/products/${product.id}`} className="mini ui right labeled icon button primary">Szczegóły...<i className="right arrow icon"></i></NavLink>
               <button className="mini ui right labeled icon button negative mt-buttons" onClick={() => onDeleteProduct(product.id, index)} >Usun...<i className="trash icon"></i></button>
             </div>
           </div>
